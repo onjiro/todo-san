@@ -38,3 +38,6 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Authentication with OAuth
+gem 'omniauth'
+gem 'omniauth-twitter'
