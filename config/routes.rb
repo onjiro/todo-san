@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get '/', to: 'sessions#index'
+
+  post 'auth/:provider/callback', to: 'sessions#create'
+
+  get 'sessions/destroy'
+
   resources :todos
 
   resources :users
