@@ -22,6 +22,6 @@ class ApplicationController < ActionController::Base
   # キャッシュ、およびセッション情報にユーザー情報を格納する
   def current_user=(user)
     @current_user = user
-    session[:user_id] = user.id
+    session[:user_id] = (user) ? user.id: user
   end
 end

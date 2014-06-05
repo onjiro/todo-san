@@ -3,6 +3,7 @@
   <ul>
     <% if current_user %>
     <li>こんにちは、<%= current_user.name  %> さん！</li>
+    <li><a href="/sessions/destroy">ログアウト</a></li>
     <% else %>
     <li><a href="/auth/developer">開発者ログイン</a></li>
     <% end %>

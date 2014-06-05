@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    # todo
+    self.current_user = nil
+    redirect_to '/', :notice => "Signed out!"
   end
 end
