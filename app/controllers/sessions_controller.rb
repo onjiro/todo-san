@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @user = User.find_or_create_from_auth_hash(request.env["omniauth.auth"])
     self.current_user = @user
 
-    redirect_to '/', :notice => "Signed in!"
+    redirect_to '/todos', :notice => "Signed in!"
   end
 
   def destroy
