@@ -65,13 +65,13 @@ class TodosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_todo
-      @todo = Todo.find_by_id_and_user_id(params[:id], current_user.id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_todo
+    @todo = Todo.find_by_id_and_user_id(params[:id], current_user.id)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def todo_params
-      params.require(:todo).permit(:user_id, :content)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def todo_params
+    params.require(:todo).permit(:content, :done)
+  end
 end
