@@ -41,3 +41,8 @@ gem 'spring',        group: :development
 # Authentication with OAuth
 gem 'omniauth'
 gem 'omniauth-twitter'
+
+# Deploy with Capistrano
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
