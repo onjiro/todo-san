@@ -44,5 +44,6 @@ gem 'omniauth-twitter'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'capistrano-rbenv'
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
