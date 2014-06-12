@@ -37,6 +37,13 @@ set :rbenv_ruby, '2.0.0-p247'
 
 namespace :deploy do
 
+  desc 'Replace the database.yml'
+  task :replace_db_setting do
+    on roles(:app), in: :sequence do
+      execute :cp, "#{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
+    end
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -45,6 +52,7 @@ namespace :deploy do
     end
   end
 
+  after :publishing, :replace_db_setting
   after :publishing, :restart
 
   after :restart, :clear_cache do
