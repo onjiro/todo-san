@@ -52,7 +52,7 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :replace_db_setting
+  after :updating, :replace_db_setting
   after :publishing, :restart
 
   after :restart, :clear_cache do
