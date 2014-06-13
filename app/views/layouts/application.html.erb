@@ -7,6 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if current_user then %>
+  <%= render 'layouts/global_nav' %>
+  <% end %>
+
   <div class="container">
 
     <%= yield %>
