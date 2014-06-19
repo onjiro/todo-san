@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get '/', to: 'sessions#index'
 
-  post 'auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'sessions#create'
+  post '/auth/:provider/callback', to: 'sessions#create'
 
   get 'sessions/destroy'
 
