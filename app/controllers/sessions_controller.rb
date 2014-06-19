@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_filter :authorize, :verify_authenticity_token
 
   def index
+    redirect_to '/todos' unless current_user.nil?
   end
 
   def create
