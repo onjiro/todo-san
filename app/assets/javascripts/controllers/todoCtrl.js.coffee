@@ -6,5 +6,14 @@ app.controller 'todoCtrl', ['$scope', '$http', ($scope, $http) ->
       $scope.todos = data
       $scope.loading = false
     .error (data, status, headers, config) ->
-      console.log(err)
+      console.log(data)
+
+  $scope.removeTodo = ($event, todo) ->
+    $event.preventDefault()
+    return if !confirm('削除してよろしいですか？')
+    $http.delete("/todos/#{todo.id}.json")
+      .success (data, status, headers, config) ->
+        $scope.todos.splice $scope.todos.indexOf(todo), 1
+      .error (data, status, headers, config) ->
+        console.log('error', data)
 ]

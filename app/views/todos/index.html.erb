@@ -19,7 +19,7 @@
                   <a class="btn btn-mini btn-default" href="/todos/{{ todo.id }}/edit">
                     <span class="glyphicon glyphicon-pencil"></span>
                   </a>
-                  <a class="btn btn-mini btn-default" href="/todos/{{ todo.id }}" rel="nofollow" data-method="delete">
+                  <a class="btn btn-mini btn-default" ng-click="removeTodo($event, todo)" href="/todos/{{ todo.id }}" rel="nofollow">
                     <span class="glyphicon glyphicon-trash"></span>
                   </a>
                 </div>
