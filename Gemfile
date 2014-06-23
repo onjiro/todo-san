@@ -52,3 +52,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
 end
+
+# for angular
+gem 'ng-rails-csrf'

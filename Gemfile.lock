@@ -72,6 +72,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    ng-rails-csrf (0.1.0)
     oauth (0.4.7)
     omniauth (1.2.1)
       hashie (>= 1.2, < 3)
@@ -154,6 +155,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
+  ng-rails-csrf
   omniauth
   omniauth-twitter
   rails (= 4.1.2.rc1)
