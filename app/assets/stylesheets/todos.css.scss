@@ -1,3 +1,26 @@
-// Place all the styles related to the todos controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.loading {
+  &.ng-hide-add {
+    -webkit-transition:all linear 0.2s;
+    -moz-transition:all linear 0.2s;
+    -o-transition:all linear 0.2s;
+    transition:all linear 0.2s;
+    display:block!important;
+    opacity: 1;
+    &.ng-hide-add-active {
+      opacity: 0;
+    }
+  }
+}
+.todo-area {
+  &.ng-hide-remove {
+    -webkit-transition:all linear 0.2s 0.3s;
+    -moz-transition:all linear 0.2s 0.3s;
+    -o-transition:all linear 0.2s 0.3s;
+    transition:all linear 0.2s 0.3s;
+    display:block!important;
+    opacity: 0;
+    &.ng-hide-remove-active {
+      opacity: 1;
+    }
+  }
+}

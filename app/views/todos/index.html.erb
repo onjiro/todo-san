@@ -1,30 +1,36 @@
   <h1>TODO 一覧</h1>
 
-  <div class="table-responsive" ng-controller="todoCtrl">
-    <table class="table table-striped table-bordered table-hover">
-      <tbody>
-        <tr ng-repeat="todo in todos">
-          <td>
-            <div class="input-group">
-              <span class="input-group-addon">
-                <input type="checkbox" value="{{ todo.content }}" ng-checked="todo.done" disabled />
-              </span>
-              <input type="text" class="form-control" value="{{ todo.content }}" disabled />
-              <div class="input-group-btn">
-                <a class="btn btn-mini btn-default" href="/todos/{{ todo.id }}/edit">
-                  <span class="glyphicon glyphicon-pencil"></span>
-                </a>
-                <a class="btn btn-mini btn-default" href="/todos/{{ todo.id }}" rel="nofollow" data-method="delete">
-                  <span class="glyphicon glyphicon-trash"></span>
-                </a>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="loading" ng-show="loading">
+    <p style="color: #aaa;">ロード中...</p>
   </div>
 
-  <%= link_to new_todo_path, class: "btn btn-mini btn-primary" do  %>
-  <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;追加する
-  <% end %>
+  <div class="todo-area" ng-hide="loading">
+    <div class="table-responsive" ng-hide="loading">
+      <table class="table table-striped table-bordered table-hover">
+        <tbody>
+          <tr class="todo-item" ng-repeat="todo in todos">
+            <td>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <input type="checkbox" value="{{ todo.content }}" ng-checked="todo.done" disabled />
+                </span>
+                <input type="text" class="form-control" value="{{ todo.content }}" disabled />
+                <div class="input-group-btn">
+                  <a class="btn btn-mini btn-default" href="/todos/{{ todo.id }}/edit">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </a>
+                  <a class="btn btn-mini btn-default" href="/todos/{{ todo.id }}" rel="nofollow" data-method="delete">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <a class="btn btn-mini btn-primary" href="/todos/new" ng-class="{disabled: loading}">
+      <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;追加する
+    </a>
+  </div>
