@@ -12,15 +12,20 @@
             <td>
               <div class="input-group">
                 <span class="input-group-addon">
-                  <input type="checkbox" value="{{ todo.content }}" ng-checked="todo.done" disabled />
+                  <input type="checkbox" ng-model="todo.done" ng-disabled="todo.id" />
                 </span>
-                <input type="text" class="form-control" value="{{ todo.content }}" disabled />
-                <div class="input-group-btn">
+                <input type="text" class="form-control" ng-model="todo.content" ng-disabled="todo.id" />
+                <div class="input-group-btn" ng-show="todo.id">
                   <a class="btn btn-mini btn-default" href="/todos/{{ todo.id }}/edit">
                     <span class="glyphicon glyphicon-pencil"></span>
                   </a>
                   <a class="btn btn-mini btn-default" ng-click="removeTodo($event, todo)" href="/todos/{{ todo.id }}" rel="nofollow">
                     <span class="glyphicon glyphicon-trash"></span>
+                  </a>
+                </div>
+                <div class="input-group-btn" ng-hide="todo.id">
+                  <a class="btn btn-mini btn-primary" href="/todos" ng-click="doneEditTodo($event, todo)">
+                    <span class="glyphicon glyphicon-ok"></span>
                   </a>
                 </div>
               </div>
@@ -30,7 +35,7 @@
       </table>
     </div>
 
-    <a class="btn btn-mini btn-primary" href="/todos/new">
+    <a class="btn btn-mini btn-primary" href="/todos/new" ng-click="newTodo($event)" rel="nofollow">
       <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;追加する
     </a>
   </div>
