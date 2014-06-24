@@ -11,19 +11,18 @@
           <tr class="todo-item" ng-repeat="todo in todos">
             <td>
               <div class="input-group">
-                <span class="input-group-addon">
-                  <input type="checkbox" ng-model="todo.done" ng-disabled="todo.id" />
+                <span class="input-group-addon" ng-hide="todo.editing">
+                  <input type="checkbox" ng-model="todo.done" ng-change="doneEditTodo($event, todo)"/>
                 </span>
-                <input type="text" class="form-control" ng-model="todo.content" ng-disabled="todo.id" />
-                <div class="input-group-btn" ng-show="todo.id">
-                  <a class="btn btn-mini btn-default" href="/todos/{{ todo.id }}/edit">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                  </a>
+                <form ng-submit="doneEditTodo($event, todo)" ng-click="editTodo($event, todo)">
+                  <input type="text" class="form-control" ng-model="todo.content" ng-disabled="!todo.editing" />
+                </form>
+                <div class="input-group-btn" ng-hide="todo.editing">
                   <a class="btn btn-mini btn-default" ng-click="removeTodo($event, todo)" href="/todos/{{ todo.id }}" rel="nofollow">
                     <span class="glyphicon glyphicon-trash"></span>
                   </a>
                 </div>
-                <div class="input-group-btn" ng-hide="todo.id">
+                <div class="input-group-btn" ng-show="todo.editing">
                   <a class="btn btn-mini btn-primary" href="/todos" ng-click="doneEditTodo($event, todo)">
                     <span class="glyphicon glyphicon-ok"></span>
                   </a>
