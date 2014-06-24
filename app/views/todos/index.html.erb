@@ -10,24 +10,33 @@
         <tbody>
           <tr class="todo-item" ng-repeat="todo in todos">
             <td>
-              <div class="input-group">
-                <span class="input-group-addon" ng-hide="todo.editing">
-                  <input type="checkbox" ng-model="todo.done" ng-change="doneEditTodo($event, todo)"/>
+              <!-- 表示時 -->
+              <div class="input-group" ng-hide="todo.editing">
+                <span class="input-group-addon">
+                  <input type="checkbox" ng-model="todo.done" ng-change="doneEditTodo($event, todo)" />
                 </span>
-                <form ng-submit="doneEditTodo($event, todo)" ng-click="editTodo($event, todo)">
-                  <input type="text" class="form-control" ng-model="todo.content" ng-disabled="!todo.editing" todo-focus="todo.editing" />
-                </form>
-                <div class="input-group-btn" ng-hide="todo.editing">
+                <span  ng-click="editTodo($event, todo)">
+                  <input type="text" class="form-control" ng-model="todo.content" disabled />
+                </span>
+                <span class="input-group-btn">
                   <a class="btn btn-mini btn-default" ng-click="removeTodo($event, todo)" href="/todos/{{ todo.id }}" rel="nofollow">
                     <span class="glyphicon glyphicon-trash"></span>
                   </a>
-                </div>
-                <div class="input-group-btn" ng-show="todo.editing">
+                </span>
+              </div>
+
+              <!-- 編集時 -->
+              <div class="input-group" ng-show="todo.editing">
+                <form ng-submit="doneEditTodo($event, todo)" >
+                  <input type="text" class="form-control" ng-model="todo.content" todo-focus="todo.editing" />
+                </form>
+                <span class="input-group-btn">
                   <a class="btn btn-mini btn-primary" href="/todos" ng-click="doneEditTodo($event, todo)">
                     <span class="glyphicon glyphicon-ok"></span>
                   </a>
-                </div>
+                </span>
               </div>
+
             </td>
           </tr>
         </tbody>
