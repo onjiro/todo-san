@@ -12,7 +12,7 @@
             <td>
               <div class="input-group">
                 <span class="input-group-addon" ng-hide="todo.editing">
-                  <input type="checkbox" ng-model="todo.done"/>
+                  <input type="checkbox" ng-model="todo.done" ng-change="doneEditTodo($event, todo)"/>
                 </span>
                 <form ng-submit="doneEditTodo($event, todo)" ng-click="editTodo($event, todo)">
                   <input type="text" class="form-control" ng-model="todo.content" ng-disabled="!todo.editing" />
