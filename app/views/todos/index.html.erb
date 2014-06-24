@@ -14,7 +14,9 @@
                 <span class="input-group-addon" ng-show="todo.id">
                   <input type="checkbox" ng-model="todo.done"/>
                 </span>
-                <input type="text" class="form-control" ng-model="todo.content" ng-disabled="todo.id" />
+                <form ng-submit="doneEditTodo($event, todo)">
+                  <input type="text" class="form-control" ng-model="todo.content" ng-disabled="todo.id" />
+                </form>
                 <div class="input-group-btn" ng-show="todo.id">
                   <a class="btn btn-mini btn-default" href="/todos/{{ todo.id }}/edit">
                     <span class="glyphicon glyphicon-pencil"></span>
