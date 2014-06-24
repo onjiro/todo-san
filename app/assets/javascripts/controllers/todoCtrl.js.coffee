@@ -18,6 +18,7 @@ app.controller 'todoCtrl', ['$scope', '$http', ($scope, $http) ->
 
   $scope.doneEditTodo = ($event, todo) ->
     $event.preventDefault() if $event?.preventDefault
+    return unless todo.content
     delete todo.editing
     if todo.id
       $http.put("/todos/#{todo.id}.json", { todo: todo })
