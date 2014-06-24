@@ -11,8 +11,8 @@
           <tr class="todo-item" ng-repeat="todo in todos">
             <td>
               <div class="input-group">
-                <span class="input-group-addon">
-                  <input type="checkbox" ng-model="todo.done" ng-disabled="todo.id" />
+                <span class="input-group-addon" ng-show="todo.id">
+                  <input type="checkbox" ng-model="todo.done"/>
                 </span>
                 <input type="text" class="form-control" ng-model="todo.content" ng-disabled="todo.id" />
                 <div class="input-group-btn" ng-show="todo.id">
