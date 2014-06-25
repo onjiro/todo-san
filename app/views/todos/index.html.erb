@@ -8,7 +8,7 @@
     <div class="table-responsive" ng-hide="loading">
       <table class="table table-striped table-bordered table-hover">
         <tbody>
-          <tr class="todo-item" ng-repeat="todo in todos">
+          <tr class="todo-item" ng-repeat="todo in todos | orderBy:'-id'">
             <td>
               <!-- 表示時 -->
               <div class="input-group" ng-hide="todo.editing">
