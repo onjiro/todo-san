@@ -12,7 +12,7 @@
   }
 }
 .todo-area {
-  &.ng-hide-remove {
+  &.ng-hide-remove, &.ng-hide-add {
     -webkit-transition:all linear 0.2s 0.3s;
     -moz-transition:all linear 0.2s 0.3s;
     -o-transition:all linear 0.2s 0.3s;
@@ -20,6 +20,28 @@
     display:block!important;
     opacity: 0;
     &.ng-hide-remove-active {
+      opacity: 1;
+    }
+  }
+
+  tr.ng-leave {
+    -webkit-transition:all linear 0.2s;
+    -moz-transition:all linear 0.2s;
+    -o-transition:all linear 0.2s;
+    transition:all linear 0.2s;
+    opacity: 1;
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
+
+  tr.ng-enter {
+    -webkit-transition:all linear 0.2s;
+    -moz-transition:all linear 0.2s;
+    -o-transition:all linear 0.2s;
+    transition:all linear 0.2s;
+    opacity: 0;
+    &.ng-enter-active {
       opacity: 1;
     }
   }
