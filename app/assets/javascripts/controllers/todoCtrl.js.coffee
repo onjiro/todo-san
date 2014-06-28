@@ -1,6 +1,8 @@
 app.controller 'todoCtrl', ['$scope', '$http', ($scope, $http) ->
   $scope.loading = true
+  $scope.newtodo = {}
   $scope.todos = []
+
   $http.get('/todos.json')
     .success (data, status, headers, config) ->
       $scope.todos = data
@@ -8,9 +10,16 @@ app.controller 'todoCtrl', ['$scope', '$http', ($scope, $http) ->
     .error (data, status, headers, config) ->
       console.log(data)
 
-  $scope.newTodo = ($event) ->
+  $scope.saveNewTodo = ($event, todo) ->
     $event.preventDefault()
-    $scope.todos.push({ editing: true })
+    return unless todo.content
+    delete todo.editing
+    $http.post('/todos.json', { todo: todo })
+      .success (data, status, headers, config) ->
+        $scope.todos.push(data)
+        $scope.newtodo = {}
+      .error (data, status, headers, config) ->
+        console.log(data)
 
   $scope.editTodo = ($event, todo) ->
     $event.preventDefault()
@@ -20,18 +29,11 @@ app.controller 'todoCtrl', ['$scope', '$http', ($scope, $http) ->
     $event.preventDefault() if $event?.preventDefault
     return unless todo.content
     delete todo.editing
-    if todo.id
-      $http.put("/todos/#{todo.id}.json", { todo: todo })
-        .success (data, status, headers, config) ->
-          todo.id = data.id
-        .error (data, status, headers, config) ->
-          console.log(data)
-    else
-      $http.post('/todos.json', { todo: todo })
-        .success (data, status, headers, config) ->
-          todo.id = data.id
-        .error (data, status, headers, config) ->
-          console.log(data)
+    $http.put("/todos/#{todo.id}.json", { todo: todo })
+      .success (data, status, headers, config) ->
+        todo.id = data.id
+      .error (data, status, headers, config) ->
+        console.log(data)
 
   $scope.removeTodo = ($event, todo) ->
     $event.preventDefault()
