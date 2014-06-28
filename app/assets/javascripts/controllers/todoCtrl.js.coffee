@@ -1,25 +1,17 @@
-app.controller 'todoCtrl', ['$scope', '$http', ($scope, $http) ->
+app.controller 'todoCtrl', ['$scope', '$http', 'Todo', ($scope, $http, Todo) ->
   $scope.loading = true
-  $scope.newtodo = {}
-  $scope.todos = []
+  $scope.newtodo = new Todo()
 
-  $http.get('/todos.json')
-    .success (data, status, headers, config) ->
-      $scope.todos = data
-      $scope.loading = false
-    .error (data, status, headers, config) ->
-      console.log(data)
+  $scope.todos = Todo.query () ->
+    $scope.loading = false
 
   $scope.saveNewTodo = ($event, todo) ->
     $event.preventDefault()
     return unless todo.content
     delete todo.editing
-    $http.post('/todos.json', { todo: todo })
-      .success (data, status, headers, config) ->
-        $scope.todos.push(data)
-        $scope.newtodo = {}
-      .error (data, status, headers, config) ->
-        console.log(data)
+    todo.$save () ->
+      $scope.todos.push(todo)
+      $scope.newtodo = new Todo()
 
   $scope.editTodo = ($event, todo) ->
     $event.preventDefault()
@@ -29,18 +21,11 @@ app.controller 'todoCtrl', ['$scope', '$http', ($scope, $http) ->
     $event.preventDefault() if $event?.preventDefault
     return unless todo.content
     delete todo.editing
-    $http.put("/todos/#{todo.id}.json", { todo: todo })
-      .success (data, status, headers, config) ->
-        todo.id = data.id
-      .error (data, status, headers, config) ->
-        console.log(data)
+    todo.$update()
 
   $scope.removeTodo = ($event, todo) ->
     $event.preventDefault()
     return if !confirm('削除してよろしいですか？')
-    $http.delete("/todos/#{todo.id}.json")
-      .success (data, status, headers, config) ->
-        $scope.todos.splice $scope.todos.indexOf(todo), 1
-      .error (data, status, headers, config) ->
-        console.log('error', data)
+    todo.$remove () ->
+      $scope.todos.splice $scope.todos.indexOf(todo), 1
 ]
