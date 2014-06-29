@@ -78,6 +78,11 @@
     font-size: 18px;
     margin-left: 48px;
     margin-right: 48px;
+
+    &.done {
+      color: #aaa;
+      text-decoration: line-through;
+    }
   }
 
 }

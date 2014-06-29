@@ -39,7 +39,7 @@
                     <span class="glyphicon glyphicon-trash"></span>
                   </a>
                 </span>
-                <div class="todo-content" ng-click="editTodo($event, todo)">
+                <div class="todo-content" ng-class="{ done: todo.done }" ng-click="editTodo($event, todo)">
                   {{todo.content}}
                 </div>
               </div>
