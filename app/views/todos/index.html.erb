@@ -14,7 +14,7 @@
             <td>
               <div class="input-group">
                 <form ng-submit="saveNewTodo($event, newtodo)" >
-                  <input type="text" class="form-control" ng-model="newtodo.content" autofocus />
+                  <input type="text" class="form-control" ng-model="newtodo.content" placeholder="新規 TODO 内容" autofocus />
                 </form>
                 <span class="input-group-btn">
                   <a class="btn btn-mini btn-primary" href="/todos" ng-click="saveNewTodo($event, newtodo)">
@@ -46,7 +46,7 @@
               <!-- 編集時 -->
               <div class="input-group" ng-show="todo.editing">
                 <form ng-submit="doneEditTodo($event, todo)" >
-                  <input type="text" class="form-control" ng-model="todo.content" todo-focus="todo.editing" />
+                  <input type="text" class="form-control" ng-model="todo.content" placeholder="TODO 内容" todo-focus="todo.editing" />
                 </form>
                 <span class="input-group-btn">
                   <a class="btn btn-mini btn-primary" href="/todos" ng-click="doneEditTodo($event, todo)">
