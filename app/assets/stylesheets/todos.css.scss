@@ -46,3 +46,28 @@
     }
   }
 }
+
+.todo-item {
+  input[type=checkbox] {
+    padding: 10px 14px;
+    color: #ccc;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -o-appearance:none;
+    appearance:none;
+
+    &:checked {
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+    }
+    &:after {
+      content: "✔";
+      display: inline-block;
+      visibility: visible;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
