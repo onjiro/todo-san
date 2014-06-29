@@ -49,6 +49,7 @@
 
 .todo-item {
   input[type=checkbox] {
+    margin-top: 0;
     padding: 10px 14px;
     color: #ccc;
     -webkit-appearance:none;
@@ -70,4 +71,13 @@
       outline: none;
     }
   }
+
+  .todo-content {
+    height: 45px;
+    padding: 9px 8px;
+    font-size: 18px;
+    margin-left: 48px;
+    margin-right: 48px;
+  }
+
 }
