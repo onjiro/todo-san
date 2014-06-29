@@ -13,13 +13,14 @@
           <tr class="todo-entry-form">
             <td>
               <div class="input-group">
-                <form ng-submit="saveNewTodo($event, newtodo)" >
-                  <input type="text" class="form-control" ng-model="newtodo.content" autofocus />
+                <div class="input-group-btn">
+                  <span class="btn btn-lg btn-primary">&gt;</span>
+                </div>
+                <form class="input-group-lg" ng-submit="saveNewTodo($event, newtodo)" >
+                  <input type="text" class="form-control" ng-model="newtodo.content" placeholder="新規 TODO 内容" autofocus />
                 </form>
                 <span class="input-group-btn">
-                  <a class="btn btn-mini btn-primary" href="/todos" ng-click="saveNewTodo($event, newtodo)">
-                    <span class="glyphicon glyphicon-ok"></span>
-                  </a>
+                  <a class="btn btn-lg btn-primary" href="/todos" ng-click="saveNewTodo($event, newtodo)"> 追加 </a>
                 </span>
               </div>
             </td>
@@ -29,29 +30,30 @@
           <tr class="todo-item" ng-repeat="todo in todos | orderBy:'-id'">
             <td>
               <!-- 表示時 -->
-              <div class="input-group" ng-hide="todo.editing">
-                <span class="input-group-addon">
-                  <input type="checkbox" ng-model="todo.done" ng-change="doneEditTodo($event, todo)" />
-                </span>
-                <span  ng-click="editTodo($event, todo)">
-                  <input type="text" class="form-control" ng-model="todo.content" disabled />
-                </span>
-                <span class="input-group-btn">
-                  <a class="btn btn-mini btn-default" ng-click="removeTodo($event, todo)" href="/todos/{{ todo.id }}" rel="nofollow">
+              <div ng-hide="todo.editing">
+                <div class="pull-left">
+                  <input class="btn btn-lg btn-default glyph-icon" type="checkbox" ng-model="todo.done" ng-change="doneEditTodo($event, todo)" />
+                </div>
+                <span class="pull-right">
+                  <a class="btn btn-lg btn-default" ng-click="removeTodo($event, todo)" href="/todos/{{ todo.id }}" rel="nofollow">
                     <span class="glyphicon glyphicon-trash"></span>
                   </a>
                 </span>
+                <div class="todo-content" ng-class="{ done: todo.done }" ng-click="editTodo($event, todo)">
+                  {{todo.content}}
+                </div>
               </div>
 
               <!-- 編集時 -->
               <div class="input-group" ng-show="todo.editing">
-                <form ng-submit="doneEditTodo($event, todo)" >
-                  <input type="text" class="form-control" ng-model="todo.content" todo-focus="todo.editing" />
+                <div class="input-group-btn">
+                  <input class="btn btn-lg btn-default glyph-icon disabled" type="checkbox" ng-model="todo.done" />
+                </div>
+                <form class="input-group-lg" ng-submit="doneEditTodo($event, todo)" >
+                  <input type="text" class="form-control" ng-model="todo.content" placeholder="TODO 内容" todo-focus="todo.editing" />
                 </form>
                 <span class="input-group-btn">
-                  <a class="btn btn-mini btn-primary" href="/todos" ng-click="doneEditTodo($event, todo)">
-                    <span class="glyphicon glyphicon-ok"></span>
-                  </a>
+                  <a class="btn btn-lg btn-primary" href="/todos" ng-click="doneEditTodo($event, todo)">変更</a>
                 </span>
               </div>
 
