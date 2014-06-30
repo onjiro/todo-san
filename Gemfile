@@ -34,7 +34,7 @@ gem 'spring',        group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
@@ -49,6 +49,7 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
+  gem 'capistrano3-unicorn'
 end
 
 # for angular
