@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 source 'https://rubygems.org'
 
 
@@ -56,3 +57,11 @@ end
 
 # for angular
 gem 'ng-rails-csrf'
+
+# for js test
+group :development, :test do
+  gem "teaspoon"
+  gem "guard-teaspoon"
+  gem "mocha"
+  gem "selenium-webdriver"
+end
