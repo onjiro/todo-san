@@ -58,6 +58,7 @@ Teaspoon.configure do |config|
     #
     # Available: teaspoon-jasmine, teaspoon-mocha, teaspoon-qunit
     #suite.javascripts = ["mocha/1.17.1", "teaspoon-mocha"]
+    suite.javascripts += ["support/expect"]
 
     # You can include your own stylesheets if you want to change how Teaspoon looks.
     # Note: Spec related CSS can and should be loaded using fixtures.
@@ -164,7 +165,7 @@ Teaspoon.configure do |config|
     # Which coverage reports Instanbul should generate. Correlates directly to what Istanbul supports.
     #
     # Available: text-summary, text, html, lcov, lcovonly, cobertura, teamcity
-    #coverage.reports = ["text-summary", "html"]
+    coverage.reports = ["text-summary", "html"]
 
     # The path that the coverage should be written to - when there's an artifact to write to disk.
     # Note: Relative to `config.root`.
