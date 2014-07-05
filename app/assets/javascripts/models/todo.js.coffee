@@ -1,7 +1,6 @@
-#= require angular.min
-#= require angular-resource.min
+#= require modules/todo
 
-angular.module('todo', ['ngResource']).factory 'Todo', ['$resource', ($resource) ->
+angular.module('todo').factory 'Todo', ['$resource', ($resource) ->
   return $resource '/todos/:id.json',
     {
       id: '@id'

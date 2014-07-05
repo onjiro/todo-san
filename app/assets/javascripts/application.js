@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require angular.min
 //= require ng-rails-csrf
 //= require_directory ./models
 //= require_directory ./directives
