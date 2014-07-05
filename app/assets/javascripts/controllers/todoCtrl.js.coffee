@@ -1,4 +1,6 @@
-app.controller 'todoCtrl', ['$scope', '$http', 'Todo', ($scope, $http, Todo) ->
+#= require modules/todo
+
+angular.module('todo').controller 'todoCtrl', ['$scope', '$http', 'Todo', ($scope, $http, Todo) ->
   $scope.loading = true
   $scope.newtodo = new Todo()
 

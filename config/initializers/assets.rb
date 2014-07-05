@@ -7,3 +7,9 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( *.svg *.eot *.woff *.ttf *.map )
+
+# settings for teaspoon
+Rails.application.config.assets.precompile += %w( teaspoon.css )
+Rails.application.config.assets.precompile += %w( mocha/1.17.1.js )
+Rails.application.config.assets.precompile += %w( teaspoon-mocha.js )
+Rails.application.config.assets.precompile += %w( support/expect.js )
