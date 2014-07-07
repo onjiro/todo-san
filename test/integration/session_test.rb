@@ -11,4 +11,10 @@ class SessionTest < ActionDispatch::IntegrationTest
     assert { current_path == '/' }
     assert { page.has_content? 'Todo さん' }
   end
+
+  test 'session:index has login buttons' do
+    visit '/'
+    assert { page.has_css? 'a.login-btn-dev' }
+    assert { page.has_css? 'a.login-btn-twitter' }
+  end
 end
