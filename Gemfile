@@ -58,10 +58,13 @@ end
 # for angular
 gem 'ng-rails-csrf'
 
-# for js test
 group :development, :test do
+  # for js test
   gem "teaspoon"
   gem "guard-teaspoon"
   gem "mocha"
   gem "selenium-webdriver"
+
+  # for capybara test
+  gem "capybara"
 end
