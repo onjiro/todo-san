@@ -16,7 +16,11 @@ class ApplicationController < ActionController::Base
 
   # キャッシュ、もしくはセッション情報からユーザー情報を取得する
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    begin
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue ActiveRecord::RecordNotFound => e
+      @current_user = nil
+    end
   end
 
   # キャッシュ、およびセッション情報にユーザー情報を格納する
