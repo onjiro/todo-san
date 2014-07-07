@@ -67,4 +67,5 @@ group :development, :test do
 
   # for capybara test
   gem "capybara"
+  gem 'minitest-power_assert'
 end
