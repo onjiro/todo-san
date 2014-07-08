@@ -19,13 +19,4 @@ class SessionTest < ActionDispatch::IntegrationTest
 
     assert { current_path == '/auth/developer' }
   end
-
-  test 'show todos:index on sign in' do
-    click_link 'login-btn-dev'
-    fill_in 'name' , :with => 'User Name'
-    fill_in 'email', :with => 'email@integration.test.com'
-    click_button 'Sign In'
-
-    assert { current_path == '/todos' }
-  end
 end
