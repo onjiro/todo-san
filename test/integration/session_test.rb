@@ -18,14 +18,13 @@ class SessionTest < ActionDispatch::IntegrationTest
     visit '/'
     click_link 'login-btn-dev'
     assert { current_path == '/auth/developer' }
-    assert { page.has_css? 'input#name' }
-    assert { page.has_css? 'input#email' }
   end
-  test 'show login page on click login buttun' do
-    visit '/'
-    click_link 'login-btn-dev'
-    assert { current_path == '/auth/developer' }
-    assert { page.has_css? 'input#name' }
-    assert { page.has_css? 'input#email' }
+
+  test 'show todos:index on sign in' do
+    visit '/auth/developer'
+    fill_in 'name' , :with => 'User Name'
+    fill_in 'email', :with => 'email@integration.test.com'
+    click_button 'Sign In'
+    assert { current_path == '/todos' }
   end
 end
