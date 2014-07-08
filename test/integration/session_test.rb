@@ -2,7 +2,10 @@
 require 'test_helper'
 
 class SessionTest < ActionDispatch::IntegrationTest
-  setup { visit '/' }
+  setup do
+    sign_out
+    visit '/'
+  end
 
   test 'show session:index on visit root' do
     assert { current_path == '/' }

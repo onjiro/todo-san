@@ -23,4 +23,8 @@ class ActionDispatch::IntegrationTest
     fill_in 'email', with: email
     click_button 'Sign In'
   end
+
+  def sign_out()
+    visit '/sessions/destroy'
+  end
 end
