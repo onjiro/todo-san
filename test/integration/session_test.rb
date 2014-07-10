@@ -2,7 +2,10 @@
 require 'test_helper'
 
 class SessionTest < ActionDispatch::IntegrationTest
-  setup { visit '/' }
+  setup do
+    sign_out
+    visit '/'
+  end
 
   test 'show session:index on visit root' do
     assert { current_path == '/' }
@@ -18,14 +21,5 @@ class SessionTest < ActionDispatch::IntegrationTest
     click_link 'login-btn-dev'
 
     assert { current_path == '/auth/developer' }
-  end
-
-  test 'show todos:index on sign in' do
-    click_link 'login-btn-dev'
-    fill_in 'name' , :with => 'User Name'
-    fill_in 'email', :with => 'email@integration.test.com'
-    click_button 'Sign In'
-
-    assert { current_path == '/todos' }
   end
 end

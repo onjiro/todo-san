@@ -15,4 +15,16 @@ end
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
+
+  private
+  def sign_in(user = 'user', email = '')
+    visit '/auth/developer'
+    fill_in 'name' , with: user
+    fill_in 'email', with: email
+    click_button 'Sign In'
+  end
+
+  def sign_out()
+    visit '/sessions/destroy'
+  end
 end
