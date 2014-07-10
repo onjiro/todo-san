@@ -6,8 +6,8 @@ class TodosTest < ActionDispatch::IntegrationTest
   teardown { sign_out }
 
   test 'show todos:index after sign in' do
-    assert { current_path == '/todos' }
     assert { page.has_content? 'Todo さん' }
+    assert { current_path == '/todos' }
   end
 
   test 'show new todo entry form on finish loaded' do
