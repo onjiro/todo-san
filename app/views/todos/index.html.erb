@@ -17,10 +17,10 @@
                   <span class="btn btn-lg btn-primary">&gt;</span>
                 </div>
                 <form class="input-group-lg" ng-submit="saveNewTodo($event, newtodo)" >
-                  <input type="text" class="form-control" ng-model="newtodo.content" placeholder="新規 TODO 内容" autofocus />
+                  <input type="text" name="newtodo-content" class="form-control" ng-model="newtodo.content" placeholder="新規 TODO 内容" autofocus />
                 </form>
                 <span class="input-group-btn">
-                  <a class="btn btn-lg btn-primary" href="/todos" ng-click="saveNewTodo($event, newtodo)"> 追加 </a>
+                  <a id="add-new-todo-btn" class="btn btn-lg btn-primary" href="/todos" ng-click="saveNewTodo($event, newtodo)"> 追加 </a>
                 </span>
               </div>
             </td>

@@ -16,6 +16,17 @@ class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
 
+  # Make sure not rollback on finish every case
+  # Change from webkit will be commited in any case.
+  # So, we clean table with database rewinder.
+  self.use_transactional_fixtures = false
+
+  def teardown_with_global
+    teardown_without_global
+    DatabaseRewinder.clean
+  end
+  alias_method_chain :teardown, :global
+
   private
   def sign_in(user = 'user', email = '')
     visit '/auth/developer'

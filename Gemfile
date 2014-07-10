@@ -69,4 +69,5 @@ group :development, :test do
   gem "capybara"
   gem 'capybara-webkit'
   gem 'minitest-power_assert'
+  gem 'database_rewinder'
 end
