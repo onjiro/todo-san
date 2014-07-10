@@ -4,6 +4,7 @@ require 'test_helper'
 class TodosTest < ActionDispatch::IntegrationTest
   setup { sign_in user: 'hoge', email: 'email@integration.test.com' }
   teardown { sign_out }
+  teardown { DatabaseRewinder.clean }
 
   test 'show todos:index after sign in' do
     assert { page.has_content? 'Todo さん' }
