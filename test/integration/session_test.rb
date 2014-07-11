@@ -7,17 +7,17 @@ class SessionTest < ActionDispatch::IntegrationTest
     visit '/'
   end
 
-  test 'show session:index on visit root' do
+  test '/ にアクセスするとトップ画面が表示されること' do
     assert { current_path == '/' }
     assert { page.has_content? 'Todo さん' }
   end
 
-  test 'session:index has login buttons' do
+  test 'トップ画面にログインボタンが表示されていること' do
     assert { page.has_css? '#login-btn-dev' }
     assert { page.has_css? '#login-btn-twitter' }
   end
 
-  test 'show login page on click login buttun' do
+  test 'ログインボタンをクリックするとログインページに遷移すること' do
     click_link 'login-btn-dev'
 
     assert { current_path == '/auth/developer' }
