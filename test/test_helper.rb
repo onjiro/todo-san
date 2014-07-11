@@ -29,10 +29,11 @@ class ActionDispatch::IntegrationTest
 
   private
   def sign_in(user = 'user', email = '')
+    OmniAuth.config.mock_auth[:development] = OmniAuth::AuthHash.new provider: 'development', uid: 'test_mock_user', info: {
+      name: user,
+      email: email
+    }
     visit '/auth/developer'
-    fill_in 'name' , with: user
-    fill_in 'email', with: email
-    click_button 'Sign In'
   end
 
   def sign_out()

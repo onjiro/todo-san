@@ -15,10 +15,4 @@ class SessionTest < ActionDispatch::IntegrationTest
     assert { page.has_css? '#login-btn-dev' }
     assert { page.has_css? '#login-btn-twitter' }
   end
-
-  test 'ログインボタンをクリックするとログインページに遷移すること' do
-    click_link 'login-btn-dev'
-
-    assert { current_path == '/auth/developer' }
-  end
 end
